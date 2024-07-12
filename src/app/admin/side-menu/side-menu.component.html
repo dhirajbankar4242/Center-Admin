@@ -1,0 +1,20 @@
+<div>
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item" [routerLinkActive]="'active-link'">
+        <a class="nav-link" aria-current="page" [routerLink]="['/admin/home']">
+          <span class="fs-6 ms-2 d-none d-sm-inline">Home</span>
+        </a>
+        <hr class="m-0 border-0 border-bottom border-primary w-100" />
+      </li>
+    </ul>
+    <ul class="nav flex-column">
+      <li class="nav-item" [routerLinkActive]="'active-link'">
+        <a class="nav-link" aria-current="page" (click)="signOut()">
+          <span class="fs-6 ms-2 d-none d-sm-inline">SignOut</span>
+        </a>
+        <hr class="m-0 border-0 border-bottom border-primary w-100" />
+      </li>
+    </ul>
+  </div>
+</div>
