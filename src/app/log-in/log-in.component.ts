@@ -47,7 +47,7 @@ export class LogInComponent {
             this.checkLogin(result);
             // Example: Set user session and navigate to home page
             // this.authService.setUserSession(result);
-            this.router.navigate(['/admin/home']);
+            this.router.navigate(['/admin/dashboard']);
           }
         },
         (error: any) => {
@@ -65,7 +65,7 @@ export class LogInComponent {
     const localStorage = new StorageService()
     localStorage.setItem(Global.key_token, result.token);
     localStorage.setItem(Global.key_refresh_token, result.refreshToken);
-    this.router.navigate(['/admin/home']);
+    this.router.navigate(['/admin/dashboard']);
 
     // this.localStorage.setItem(Global.key_firstName, result.loginData.firstName.en);
     // this.localStorage.setItem(Global.key_loginId, result.loginData.loginId);
