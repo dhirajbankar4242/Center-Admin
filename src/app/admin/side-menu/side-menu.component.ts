@@ -60,7 +60,7 @@ export class SideMenuComponent {
     this.spinner.show()
     this.storage.clear().then(() => {
       this.permissionService.flushPermissions();
-      this.router.navigate(['/log_in'])
+      this.router.navigate([''])
       this.spinner.hide()
     });
   }

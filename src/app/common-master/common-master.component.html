@@ -1,0 +1,172 @@
+<!-- <p>common-master works!</p>
+<form [formGroup]="form">
+
+    @for(element of inputConfigurations;track element.key){
+    @switch (element.controlType) {
+
+    @case ("TEXT"){
+    <div class="mb-3">
+      <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+      <input [id]="element.key" class="form-control" [formControlName]="element.key" [type]="element.type">
+      
+    </div>
+    }
+
+    @case ("SELECT"){
+    <div class="mb-3">
+      <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+      <select [id]="element.key" class="form-select" [formControlName]="element.key">
+        @for(opt of element.options;track opt.key){
+        <option [value]="opt.key">{{opt.value}}</option>
+        }
+      </select>
+      
+    </div>
+    }
+
+    @case ("DROPDOWN"){
+    <div class="mb-3">
+      <label class="form-label text-muted">{{element.label}}</label>
+      
+    </div>
+    }
+
+    @case ("CHECK_BOX"){
+    <div class="mb-3">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" [id]="element.key"
+          [formControlName]="element.key" [value]="false">
+        <label class="form-check-label" [attr.for]="element.key">{{element.label}}</label>
+      </div>
+      
+    </div>
+    }
+
+    @case ("RADIO"){
+    <div class="mb-3">
+      @for(opt of element.options;track opt.key){
+      <div class="form-check">
+        <input class="form-check-input" type="radio" [formControlName]="element.key" [id]="opt.key"
+          [value]="opt.value">
+        <label class="form-check-label" [attr.for]="opt.key">
+          {{opt.value}}
+        </label>
+      </div>
+      }
+    </div>
+    }
+
+    @case ("TEXT_AREA"){
+    <div class="mb-3">
+      <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+      <textarea [id]="element.key" class="form-control" [formControlName]="element.key" rows="2"></textarea>
+      
+    </div>
+    }
+    @case ("IMAGE"){
+    <div class="card">
+      <div class="card-body text-center">
+        @if(imgSrc){
+        <img class="img-item img-fluid mb-2" [src]="imgSrc | sanitizerUrl" alt="">
+        }@else {
+        <img class="img-item mb-2" src="assets/img/no-image.png" alt="">
+        }
+        <div class="small font-italic text-muted mb-1">JPG or PNG no larger than 500 KB</div>
+        <button type="button" class="btn btn-primary btn-file" title="Import Excel Data" type="button">
+          Upload new image<input type="file" (change)="onFileChange($event)" accept="image/*">
+        </button>
+      </div>
+    </div>
+
+    }
+
+    }
+
+    }
+
+    </form> -->
+
+<p>common-master works!</p>
+<form [formGroup]="form">
+
+  <ng-container *ngFor="let element of inputConfigurations; trackBy: trackByKey">
+    <ng-container [ngSwitch]="element.controlType">
+
+      <div *ngSwitchCase="InputType.TEXT" class="mb-3">
+        <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+        <input [id]="element.key" class="form-control" [formControlName]="element.key" [type]="element.controlType">
+      </div>
+
+      <div *ngSwitchCase="InputType.SELECT" class="mb-3">
+        <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+        <select [id]="element.key" class="form-select" [formControlName]="element.key">
+          <ng-container *ngFor="let opt of element.options; trackBy: trackByOptionKey">
+            <option [value]="opt.value">{{opt.value}}</option>
+          </ng-container>
+        </select>
+      </div>
+
+      <!-- <div *ngSwitchCase="InputType.DROP_DOWN" class="mb-3">
+        <label class="form-label text-muted">{{element.label}}</label>
+      </div> -->
+
+      <div *ngSwitchCase="InputType.DROP_DOWN" class="mb-3">
+        <label class="form-label text-muted">{{element.label}}</label>
+        <select [id]="element.key" class="form-select" [formControlName]="element.key">
+          <ng-container *ngFor="let opt of element.options; trackBy: trackByOptionKey">
+            <option [value]="opt.key">{{opt.value}}</option>
+          </ng-container>
+        </select>
+      </div>
+      
+      <div *ngSwitchCase="InputType.CHECK_BOX" class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" [id]="element.key"
+            [formControlName]="element.key" [value]="false">
+          <label class="form-check-label" [attr.for]="element.key">{{element.label}}</label>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="InputType.RADIO" class="mb-3">
+        <ng-container *ngFor="let opt of element.options; trackBy: trackByOptionKey">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [formControlName]="element.key" [id]="opt.key"
+              [value]="opt.value">
+            <label class="form-check-label" [attr.for]="opt.key">
+              {{opt.value}}
+            </label>
+          </div>
+        </ng-container>
+      </div>
+
+      <div *ngSwitchCase="InputType.TEXT_AREA" class="mb-3">
+        <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+        <textarea [id]="element.key" class="form-control" [formControlName]="element.key" rows="2"></textarea>
+      </div>
+
+      <!-- <div *ngSwitchCase="InputType.IMAGE" class="card">
+        <div class="card-body text-center">
+          <ng-container *ngIf="imgSrc; else noImage">
+            <img class="img-item img-fluid mb-2" [src]="imgSrc | sanitizerUrl" alt="">
+          </ng-container>
+          <ng-template #noImage>
+            <img class="img-item mb-2" src="assets/img/no-image.png" alt="">
+          </ng-template>
+          <div class="small font-italic text-muted mb-1">JPG or PNG no larger than 500 KB</div>
+          <button type="button" class="btn btn-primary btn-file" title="Import Excel Data" type="button">
+            Upload new image<input type="file" (change)="onFileChange($event)" accept="image/*">
+          </button>
+        </div>
+      </div> -->
+
+    </ng-container>
+  </ng-container>
+
+  <button class="btn-primary" type="submit" (click)="onSubmit()">{{btnTitle}}</button>
+
+</form>
+
+@defer{
+  <app-data-table url={{url}} title={{title}} [displayedColumns]="displayedColumns"
+   ></app-data-table>    
+}

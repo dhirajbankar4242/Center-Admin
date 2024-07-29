@@ -1,0 +1,20 @@
+<p>data-table works!</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let column of displayedColumns">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td *ngFor="let column of displayedColumns">{{ item[column] }}</td>
+          <td>
+            <!-- <button class="btn btn-warning" (click)="onEdit(item)">Edit</button>
+            <button class="btn btn-danger" (click)="onDelete(item)">Delete</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

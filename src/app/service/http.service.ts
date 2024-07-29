@@ -28,11 +28,13 @@ export class HttpService {
     return this.http.get<any>(`${this.baseUrl}${url}`)
   }
 
-  delete(url: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}${url}`)
+  getImage(url: string, id:any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}${url}`)
   }
 
- 
+  delete(url: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}${url}`)
+  } 
 
   login(credentials: any): Observable<any> {
     this.loaderService.startLoading();

@@ -4,10 +4,10 @@
     <span class="logo_name">CodingLab</span>
   </div>
   <ul class="nav-links">
-    <li class="nav-item active" routerLinkActive="active-link">
-      <a class="nav-link">
+    <li class="nav-item" routerLinkActive="active-link">
+      <a class="nav-link" [routerLink]="['/admin/dashboard']">
         <i class="bx bx-grid-alt"></i>
-        <span class="link_name">Dashboard</span>
+          <span class="link_name">Dashboard</span>
       </a>
       <ul class="sub-menu blank">
         <li>
@@ -43,13 +43,14 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <div class="iocn-link"><a class="nav-link">
-        <i class="bx bx-collection"></i>
-        <span class="link_name">Website & App Development</span>
-      </a>
-      <i class="bx bxs-chevron-down arrow"></i>
-    </div>
-      
+      <div class="iocn-link">
+        <a class="nav-link">
+          <i class="bx bx-collection"></i>
+          <span class="link_name">Website & App Development</span>
+        </a>
+        <i class="bx bxs-chevron-down arrow"></i>
+      </div>
+
       <ul class="sub-menu">
         <li><a class="link_name" href="#">Website & App Development</a></li>
         <li>
@@ -71,11 +72,14 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <div class="iocn-link"><a class="nav-link">
-        <i class="bx bx-collection"></i>
-        <span class="link_name">iSmart Education</span>
-      </a> <i class="bx bxs-chevron-down arrow"></i></div>
-      
+      <div class="iocn-link">
+        <a class="nav-link">
+          <i class="bx bx-collection"></i>
+          <span class="link_name">iSmart Education</span>
+        </a>
+        <i class="bx bxs-chevron-down arrow"></i>
+      </div>
+
       <ul class="sub-menu">
         <li><a class="link_name" href="#">iSmart Education</a></li>
         <li>
@@ -112,11 +116,13 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <div class="iocn-link"><a class="nav-link">
-        <i class="bx bx-collection"></i>
-        <span class="link_name">Adway's Digital Marketing</span>
-      </a><i class="bx bxs-chevron-down arrow"></i></div>
-      
+      <div class="iocn-link">
+        <a class="nav-link">
+          <i class="bx bx-collection"></i>
+          <span class="link_name">Adway's Digital Marketing</span> </a
+        ><i class="bx bxs-chevron-down arrow"></i>
+      </div>
+
       <ul class="sub-menu">
         <li><a class="link_name" href="#">Adway's Digital Marketing</a></li>
         <li>
@@ -154,11 +160,13 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <div class="iocn-link"><a class="nav-link">
-        <i class="bx bx-collection"></i>
-        <span class="link_name">Graphics Design</span>
-      </a><i class="bx bxs-chevron-down arrow"></i></div>
-      
+      <div class="iocn-link">
+        <a class="nav-link">
+          <i class="bx bx-collection"></i>
+          <span class="link_name">Graphics Design</span> </a
+        ><i class="bx bxs-chevron-down arrow"></i>
+      </div>
+
       <ul class="sub-menu">
         <li><a class="link_name" href="#"> Graphics Design</a></li>
         <li>
@@ -192,13 +200,15 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <div class="iocn-link"> <a class="nav-link">
-        <i class="bx bx-collection"></i>
-        <span class="link_name">Franchise</span>
-      </a><i class="bx bxs-chevron-down arrow"></i></div>
-     
+      <div class="iocn-link">
+        <a class="nav-link">
+          <i class="bx bx-collection"></i>
+          <span class="link_name">Franchise</span> </a
+        ><i class="bx bxs-chevron-down arrow"></i>
+      </div>
+
       <ul class="sub-menu">
-        <li><a class="link_name" href="#">Franchise</a> </li>
+        <li><a class="link_name" href="#">Franchise</a></li>
         <li>
           <a class="nav-link" [routerLink]="['/admin/franchise/take-franchise']"
             >Take Franchise</a
@@ -212,9 +222,9 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link">
+      <a class="nav-link" [routerLink]="['/admin/g1-needs']">
         <i class="bx bx-cog"></i>
-        <span class="link_name">G1 Needs</span>
+          <span class="link_name">G1 Needs</span>
       </a>
       <ul class="sub-menu">
         <li>
@@ -223,7 +233,7 @@
       </ul>
     </li>
     <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link">
+      <a class="nav-link" [routerLink]="['/admin/finance']">
         <i class="bx bx-cog"></i>
         <span class="link_name">Finance</span>
       </a>
@@ -233,14 +243,28 @@
         </li>
       </ul>
     </li>
+
     <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link">
+      <a class="nav-link" (click)="signOut()">
         <i class="bx bx-cog"></i>
-        <span class="link_name">Finance</span>
+        <span class="link_name">Log Out</span>
       </a>
       <ul class="sub-menu">
         <li><a class="nav-link" (click)="signOut()">Log Out</a></li>
       </ul>
     </li>
+
+    <li class="nav-item" routerLinkActive="active-link">
+      <a class="nav-link" [routerLink]="['/admin/test']">
+        <i class="bx bx-cog"></i>
+        <span class="link_name">Test</span>
+      </a>
+      <ul class="sub-menu">
+        <li>
+          <a class="nav-link" [routerLink]="['/admin/test']">Test</a>
+        </li>
+      </ul>
+    </li>
+
   </ul>
 </div>

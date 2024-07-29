@@ -21,6 +21,8 @@ import { GiveFranchiseComponent } from "./side-menu/Franchise/give-franchise/giv
 import { TakeFranchiseComponent } from "./side-menu/Franchise/take-franchise/take-franchise.component";
 import { G1NeedsComponent } from "./side-menu/g1-needs/g1-needs.component";
 import { FinanceComponent } from "./side-menu/finance/finance.component";
+import { DataTableComponent } from "../common-master/data-table/data-table.component";
+import { BrandComponentComponent } from "../brand-component/brand-component.component";
 
 const routes: Routes = [
   
@@ -107,6 +109,14 @@ const routes: Routes = [
   {
     path:'finance',
     component: FinanceComponent
+  },
+  {
+    path:'dataTableComponent',
+    component: DataTableComponent
+  },
+  {
+    path:'test',
+    component: BrandComponentComponent
   },
 ];
 

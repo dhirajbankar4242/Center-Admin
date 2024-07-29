@@ -11,6 +11,6 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true
   }
   alert("login first")
-  router.navigate(['/log_in'])
+  router.navigate([''])
   return false;
 };

@@ -62,7 +62,7 @@ function injectToken(request: HttpRequest<any>, localStorage: StorageService): H
   const token = localStorage.getItem(Global.key_token);
   return request.clone({
     setHeaders: {
-      'Authorization': `Bearer ${token}`
+      'X-Authorization': `Bearer ${token}`
     }
   });
 }

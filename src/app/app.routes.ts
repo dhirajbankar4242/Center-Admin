@@ -13,7 +13,7 @@ export const routes: Routes = [
     },  
             
 
-    {path: "log_in", component: LogInComponent},
+    {path: "", component: LogInComponent},
  //   {path:"onboarding/:token", component: OnboardingComponent},//,canActivate:[IdGuard]
     {path:'error', component:ErrorComponent},
 ];
