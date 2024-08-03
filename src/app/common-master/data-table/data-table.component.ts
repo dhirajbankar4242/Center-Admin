@@ -24,8 +24,8 @@ export class DataTableComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
+    console.log("loadData()")
     const subscription = this.httpService.get(this.url).subscribe((response: any) => {
-      console.log("response"+response)
       this.data = response;
     });
     this.subscriptions.push(subscription);
