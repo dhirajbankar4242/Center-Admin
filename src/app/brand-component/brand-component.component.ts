@@ -87,8 +87,8 @@ export class BrandComponentComponent {
     // },
   ];
 
-  onAddNew() {
-    this.commonMasterComponent.createNewRecord();
-  }
+  // onAddNew() {
+  //   this.commonMasterComponent.createNewRecord();
+  // }
 
 }

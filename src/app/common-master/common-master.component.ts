@@ -22,29 +22,29 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   @Input() url = '';
   @Input() inputConfigurations: InputConfiguration[] = [];
   @Input() title = '';
-  @Input() aiInput: any;
+  // @Input() aiInput: any;
   @Input() btnTitle = 'Submit'
-  imgSrc?: any;
-  selectedFile: any;
+  // imgSrc?: any;
+  // selectedFile: any;
 
   //Expose the InputType enum to the template
   public InputType = InputType;
 
   @ViewChild('dataTableComponent', { static: false }) dataTableComponent !: DataTableComponent;
 
-  createMode = true;
-  submitted = false;
-  selectedRecordData !: any;
+  // createMode = true;
+  // submitted = false;
+  // selectedRecordData !: any;
   form !: FormGroup;
   selectedId: string | null = null;
 
   constructor(private fb: FormBuilder, private readonly httpService: HttpService) { }
 
   ngOnChanges() {
-    if (this.aiInput) {
-      this.createNewRecord();
-      this.form.controls['name'].setValue(this.aiInput);
-    }
+    // if (this.aiInput) {
+    //   this.createNewRecord();
+    //   this.form.controls['name'].setValue(this.aiInput);
+    // }
   }
 
   ngOnInit(): void {
@@ -60,12 +60,12 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onSubmit() {
-    this.submitted = true;
+    // this.submitted = true;
     if (this.form.valid) {
       const val = this.form.value;
-      if (this.selectedFile) {
-        val.file = this.selectedFile;
-      }
+      // if (this.selectedFile) {
+      //   val.file = this.selectedFile;
+      // }
       const request = this.selectedId ? this.httpService.put(this.url, val) : this.httpService.post(this.url, val);
       this.subscriptions.push(
         request.subscribe(() => this.reload())
@@ -80,29 +80,29 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   createNewRecord() {
-    this.setupForm(true);
+    // this.setupForm(true);
   }
 
-  viewRecord(data: any) {
-    this.subscriptions.push(
-      this.httpService.get(`${this.url}/${data.id}`).subscribe((response: any) => {
-        this.setupForm(false, data.id);
-        this.form.patchValue(response);
-        this.selectedRecordData = data;
-      })
-    )
-    if (this.inputConfigurations.find((item: any) => item.controlType === InputType.IMAGE)) {
-      this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
-        this.imgSrc = null;
-        if (imageBlob && imageBlob.size > 0) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            this.imgSrc = reader.result || null;
-          };
-          reader.readAsDataURL(imageBlob);
-        }
-      });
-    }
+  // viewRecord(data: any) {
+  //   this.subscriptions.push(
+  //     this.httpService.get(`${this.url}/${data.id}`).subscribe((response: any) => {
+  //       // this.setupForm(false, data.id);
+  //       this.form.patchValue(response);
+  //       this.selectedRecordData = data;
+  //     })
+  //   )
+    // if (this.inputConfigurations.find((item: any) => item.controlType === InputType.IMAGE)) {
+    //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
+    //     this.imgSrc = null;
+    //     if (imageBlob && imageBlob.size > 0) {
+    //       const reader = new FileReader();
+    //       reader.onloadend = () => {
+    //         this.imgSrc = reader.result || null;
+    //       };
+    //       reader.readAsDataURL(imageBlob);
+    //     }
+    //   });
+    // }
     
     // if (this.inputConfigurations.find((item: any) => item.controlType === 'IMAGE')) {
     //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
@@ -116,41 +116,42 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
     //     }
     //   });
     // }
-  }
+  // }
 
-  private setupForm(createMode: boolean, selectedId?: any) {
-    if (!selectedId && this.inputConfigurations) {
-      const defaultData: any = {};
-      this.inputConfigurations.forEach(input => {
-        defaultData[input.key] = input.defaultValue || '';
-      });
-      this.form.reset(defaultData);
-    } else {
-      this.form.reset();
-    }
-    this.createMode = createMode;
-    this.selectedId = selectedId;
-    this.selectedRecordData = null;
-    this.submitted = false;
-    $('.offcanvas').offcanvas('show');
-  }
+  // private setupForm(createMode: boolean, selectedId?: any) {
+  //   if (!selectedId && this.inputConfigurations) {
+  //     const defaultData: any = {};
+  //     this.inputConfigurations.forEach(input => {
+  //       defaultData[input.key] = input.defaultValue || '';
+  //     });
+  //     this.form.reset(defaultData);
+  //   } else {
+  //     this.form.reset();
+  //   }
+  //   this.createMode = createMode;
+  //   this.selectedId = selectedId;
+  //   this.selectedRecordData = null;
+  //   this.submitted = false;
+  //   $('.offcanvas').offcanvas('show');
+  // }
 
   // exportExcelData() {
   //   this.httpClient.downloadExcel(${this.url});
   // }
+
   ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    // this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.selectedFile = reader.result;
-    };
-    reader.readAsDataURL(file);
-    this.imgSrc = URL.createObjectURL(file);
-  }
+  // onFileChange(event: any) {
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.selectedFile = reader.result;
+  //   };
+  //   reader.readAsDataURL(file);
+  //   this.imgSrc = URL.createObjectURL(file);
+  // }
 
   // Define trackByKey function for tracking inputConfigurations
   trackByKey(index: number, item: InputConfiguration): string {

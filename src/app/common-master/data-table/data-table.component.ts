@@ -13,9 +13,9 @@ import { CommonModule } from '@angular/common';
 export class DataTableComponent implements OnInit, OnDestroy {
   @Input() url: string = '';
   @Input() displayedColumns: string[] = [];
-  @Output() editRecord = new EventEmitter<any>();
+  // @Output() editRecord = new EventEmitter<any>();
   data: any[] = [];
-  private subscriptions: Subscription[] = [];
+  // private subscriptions: Subscription[] = [];
 
   constructor(private httpService: HttpService) {}
 
@@ -28,7 +28,7 @@ export class DataTableComponent implements OnInit, OnDestroy {
     const subscription = this.httpService.get(this.url).subscribe((response: any) => {
       this.data = response;
     });
-    this.subscriptions.push(subscription);
+    // this.subscriptions.push(subscription);
   }
 
   // onEdit(data: any) {
@@ -43,7 +43,7 @@ export class DataTableComponent implements OnInit, OnDestroy {
   // }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+    // this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }
