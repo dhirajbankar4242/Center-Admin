@@ -1,0 +1,45 @@
+
+.container {
+    max-width: 1300px;
+    max-height: 900px;
+  }
+  
+  .card {
+    margin-top: 20px;
+  }
+  
+  .card-header{
+    background-color: #f0f2f5;
+  }
+.card-body {
+  background-color: #f8f9fa; /* Change this color to match your desired background color */
+  border-bottom: 1px solid #e9ecef;
+}
+  
+  .card-title {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+  
+  .form-row > .col,
+  .form-row > [class*="col-"] {
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  
+  .btn {
+    margin: 0 5px;
+  }
+  

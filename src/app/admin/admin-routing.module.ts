@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { DashboardComponent } from "./side-menu/dashboard/dashboard.component";
+import { DashboardComponent } from "./side-menu/adminDashboard/dashboard.component";
 import { NewRegistrationComponent } from "./side-menu/Matrimony/new-registration/new-registration.component";
 import { RenewComponent } from "./side-menu/Matrimony/renew/renew.component";
 import { NewRequirementComponent } from "./side-menu/website-app-developement/new-requirement/new-requirement.component";
@@ -23,12 +23,17 @@ import { G1NeedsComponent } from "./side-menu/g1-needs/g1-needs.component";
 import { FinanceComponent } from "./side-menu/finance/finance.component";
 import { DataTableComponent } from "../common-master/data-table/data-table.component";
 import { BrandComponentComponent } from "../brand-component/brand-component.component";
+import { InviteBcComponent } from "./side-menu/invite-bc/invite-bc.component";
 
 const routes: Routes = [
   
   {
     path:'dashboard',
     component: DashboardComponent
+  },
+  {
+    path:'invite',
+    component: InviteBcComponent
   },
   {
     path:'matrimony/new-registration',

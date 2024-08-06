@@ -15,7 +15,7 @@ export class DataTableComponent implements OnInit, OnDestroy {
   @Input() displayedColumns: string[] = [];
   // @Output() editRecord = new EventEmitter<any>();
   data: any[] = [];
-  // private subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(private httpService: HttpService) {}
 
@@ -24,11 +24,12 @@ export class DataTableComponent implements OnInit, OnDestroy {
   }
 
   loadData() {
-    console.log("loadData()")
+    console.log("load data()")
     const subscription = this.httpService.get(this.url).subscribe((response: any) => {
+      console.log("load data() response")
       this.data = response;
     });
-    // this.subscriptions.push(subscription);
+    this.subscriptions.push(subscription);
   }
 
   // onEdit(data: any) {

@@ -3,6 +3,7 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
 import { authGuard } from './service/auth.guard';
 import { LogInComponent } from './log-in/log-in.component';
 import { ErrorComponent } from './error/error.component';
+import { OnboardingComponent } from './admin/side-menu/onboarding/onboarding.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,7 @@ export const routes: Routes = [
             
 
     {path: "", component: LogInComponent},
+    { path: "onboarding/:token", component: OnboardingComponent },
  //   {path:"onboarding/:token", component: OnboardingComponent},//,canActivate:[IdGuard]
     {path:'error', component:ErrorComponent},
 ];

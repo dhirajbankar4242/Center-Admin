@@ -144,6 +144,42 @@
         <textarea [id]="element.key" class="form-control" [formControlName]="element.key" rows="2"></textarea>
       </div>
 
+      <div *ngSwitchCase="InputType.TEXT_AREA" class="mb-3">
+        <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>
+        <textarea [id]="element.key" class="form-control" [formControlName]="element.key" rows="2"></textarea>
+      </div>
+
+      <div *ngSwitchCase="InputType.PASSWORD" class="mb-3">
+        <label [attr.for]="element.key" class="form-label text-muted">{{element.label}}</label>        
+        <div class="col-md-12 mb-4 d-flex align-items-center">
+          <div data-mdb-input-init class="form-outline">
+            <label class="form-label" for="password" >Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password"/>
+          </div> 
+        </div>
+
+        <div *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched" class="text-danger">
+          New Password is required.
+        </div>
+        <div *ngIf="form.get('password')?.hasError('minlength') && form.get('password')?.touched" class="text-danger">
+          New Password must be at least 8 characters long.
+        </div>
+        <div *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched" class="text-danger">
+          New Password must contain at least one capital letter.
+        </div>
+
+        <div class="col-md-12 mb-4 d-flex align-items-center">
+          <div data-mdb-input-init class="form-outline">
+            <label class="form-label" for="confirmPassword" >Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword"/>
+          </div>
+        </div>
+
+        <div *ngIf="form.get('confirmPassword')?.hasError('passwordMismatch')"class="text-danger">
+          Passwords do not match.
+        </div>
+      </div>
+
       <!-- <div *ngSwitchCase="InputType.IMAGE" class="card">
         <div class="card-body text-center">
           <ng-container *ngIf="imgSrc; else noImage">
@@ -162,11 +198,11 @@
     </ng-container>
   </ng-container>
 
-  <button class="btn-primary" type="submit" (click)="onSubmit()">{{btnTitle}}</button>
+  <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="!this.form.valid">{{btnTitle}}</button>
 
 </form>
 
-@defer{
+<!-- @defer{
   <app-data-table url={{url}} title={{title}} [displayedColumns]="displayedColumns"
    ></app-data-table>    
-}
+} -->

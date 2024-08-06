@@ -72,4 +72,8 @@ export class HttpService {
       .pipe(map(response => response.exists));
   }
 
+  fetchBc(id: string, email: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}auth/${id}?email=${email}`);
+  }
+
 }

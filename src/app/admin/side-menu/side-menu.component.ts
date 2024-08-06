@@ -3,7 +3,7 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 import { StorageService } from '../../service/storage.service';
 import { HttpService } from '../../service/http.service';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './adminDashboard/dashboard.component';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 
 @Component({

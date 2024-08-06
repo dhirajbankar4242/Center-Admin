@@ -5,12 +5,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputConfiguration, InputType } from '../admin/dto/dtos';
 import { DataTableComponent } from './data-table/data-table.component';
 import { CommonModule } from '@angular/common';
-let $:any
+let $: any
 
 @Component({
   selector: 'app-common-master',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,DataTableComponent],
+  imports: [ReactiveFormsModule, CommonModule, DataTableComponent],
   templateUrl: './common-master.component.html',
   styleUrl: './common-master.component.css'
 })
@@ -30,7 +30,7 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   //Expose the InputType enum to the template
   public InputType = InputType;
 
-  @ViewChild('dataTableComponent', { static: false }) dataTableComponent !: DataTableComponent;
+  @ViewChild('dataTableComponent', { static: false }) dataTableComponent! : DataTableComponent;
 
   // createMode = true;
   // submitted = false;
@@ -74,9 +74,8 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   reload() {
-    console.log("reolad()")
     this.dataTableComponent.loadData();
-    $('.offcanvas').offcanvas('hide');
+    $('.offcanvas').offcavas('hide');
   }
 
   createNewRecord() {
@@ -91,31 +90,31 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   //       this.selectedRecordData = data;
   //     })
   //   )
-    // if (this.inputConfigurations.find((item: any) => item.controlType === InputType.IMAGE)) {
-    //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
-    //     this.imgSrc = null;
-    //     if (imageBlob && imageBlob.size > 0) {
-    //       const reader = new FileReader();
-    //       reader.onloadend = () => {
-    //         this.imgSrc = reader.result || null;
-    //       };
-    //       reader.readAsDataURL(imageBlob);
-    //     }
-    //   });
-    // }
-    
-    // if (this.inputConfigurations.find((item: any) => item.controlType === 'IMAGE')) {
-    //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
-    //     this.imgSrc = null;
-    //     if (imageBlob && imageBlob.size > 0) {
-    //       const reader = new FileReader();
-    //       reader.onloadend = () => {
-    //         this.imgSrc = reader.result || null;
-    //       };
-    //       reader.readAsDataURL(imageBlob);
-    //     }
-    //   });
-    // }
+  // if (this.inputConfigurations.find((item: any) => item.controlType === InputType.IMAGE)) {
+  //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
+  //     this.imgSrc = null;
+  //     if (imageBlob && imageBlob.size > 0) {
+  //       const reader = new FileReader();
+  //       reader.onloadend = () => {
+  //         this.imgSrc = reader.result || null;
+  //       };
+  //       reader.readAsDataURL(imageBlob);
+  //     }
+  //   });
+  // }
+
+  // if (this.inputConfigurations.find((item: any) => item.controlType === 'IMAGE')) {
+  //   this.httpService.getImage(this.url, data.id).subscribe((imageBlob: Blob) => {
+  //     this.imgSrc = null;
+  //     if (imageBlob && imageBlob.size > 0) {
+  //       const reader = new FileReader();
+  //       reader.onloadend = () => {
+  //         this.imgSrc = reader.result || null;
+  //       };
+  //       reader.readAsDataURL(imageBlob);
+  //     }
+  //   });
+  // }
   // }
 
   // private setupForm(createMode: boolean, selectedId?: any) {
@@ -161,6 +160,17 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   // Define trackByOptionKey function for tracking dropdown options
   trackByOptionKey(index: number, item: any): string {
     return item.key;
+  }
+
+  passwordMatchValidator(formGroup: FormGroup) {
+    const passwordControl = formGroup.get('password');
+    const confirmPasswordControl = formGroup.get('confirmPassword');
+    if (passwordControl && confirmPasswordControl &&
+      passwordControl.value !== confirmPasswordControl.value) {
+      confirmPasswordControl.setErrors({ passwordMismatch: true });
+    } else if (confirmPasswordControl) {
+      confirmPasswordControl.setErrors(null);
+    }
   }
 
 }
