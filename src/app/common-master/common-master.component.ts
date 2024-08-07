@@ -74,8 +74,9 @@ export class CommonMasterComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   reload() {
+    console.log("reolad()")
     this.dataTableComponent.loadData();
-    $('.offcanvas').offcavas('hide');
+    $('.offcanvas').offcanvas('hide');
   }
 
   createNewRecord() {

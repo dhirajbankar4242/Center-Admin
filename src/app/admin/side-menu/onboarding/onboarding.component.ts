@@ -24,9 +24,9 @@ export class OnboardingComponent {
     this.registerForm = this.formBuilder.group({
       id: ['', Validators.required],
       invitationToken: ['', Validators.required],
-      bcName: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', Validators.required],
-      status: ['', Validators.required],
+      // status: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Z]).*$')]],
       confirmPassword: ['', Validators.required],
       village: ['', Validators.required],
@@ -44,6 +44,8 @@ export class OnboardingComponent {
   fetchBc(): any {
     this.inviteToken = this.route.snapshot.paramMap.get('token');
     this.email = this.route.snapshot.queryParamMap.get('email');
+    console.log(this.inviteToken)
+    console.log(this.email)
     if (this.inviteToken && this.email) {
       this.service.fetchBc(this.inviteToken, this.email).subscribe(
         (response: any) => {
